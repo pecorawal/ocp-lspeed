@@ -26,4 +26,4 @@ metadata:
   namespace: openshift-lightspeed
 type: Opaque
 stringData:
-  apitoken: AIzaSyCQz-m4XlrQCYl7kxT2XDhtIZiIzwSH7lI
+  apitoken: "PLACEHOLDER"
