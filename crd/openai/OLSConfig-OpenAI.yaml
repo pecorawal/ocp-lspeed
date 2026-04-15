@@ -1,0 +1,29 @@
+apiVersion: ols.openshift.io/v1alpha1
+kind: OLSConfig
+metadata:
+  name: cluster
+spec:
+  llm:
+    providers:
+      - name: OpenAI-LSpeed
+        type: openai
+        credentialsSecretRef:
+          name: credentials-openai
+        url: https://api.openai.com/v1
+        models:
+          - name: gpt-4.1-mini
+  ols:
+    introspectionEnabled: true
+    defaultModel: gpt-4.1-mini
+    defaultProvider: OpenAI-LSpeed
+
+
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: credentials-openai
+  namespace: openshift-lightspeed
+type: Opaque
+stringData:
+  apitoken: "PLACEHOLDER"
