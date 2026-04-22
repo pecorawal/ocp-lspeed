@@ -1,0 +1,21 @@
+apiVersion: ols.openshift.io/v1alpha1
+kind: OLSConfig
+metadata:
+  name: cluster
+spec:
+  llm:
+    providers:
+      - name: redhat-maas
+        # Se o endpoint for estritamente OpenAI-compatible, use "openai". 
+        # Algumas instâncias MaaS específicas da Red Hat aceitam "rhelai".
+        type: openai 
+        url: "https://litellm-prod.apps.maas.redhatworkshops.io/v1" 
+        credentialsSecretRef:
+          name: redhat-maas-api-keys
+        models:
+          - name: "granite-4-0-h-tiny" 
+  ols:
+    defaultProvider: redhat-maas
+    defaultModel: "granite-4-0-h-tiny"
+    # Oculta o ícone no console para usuários sem permissão de acesso à API do OLS
+    hideIcon: false
